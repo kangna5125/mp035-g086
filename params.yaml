@@ -1,0 +1,48 @@
+paths:
+  train_csv: data/raw/train.csv
+  later_csv: data/raw/later.csv
+  holdout_csv: data/raw/holdout_features.csv
+  mlflow_uri: sqlite:///mlflow.db
+  model_file: models/model.joblib
+  predictions: predictions/holdout_predictions.csv
+
+cleaning:
+  # Found by src/mp035/data_checks.py (stuck_sensor check)
+  stuck_sensor:
+    column: pm25_today
+    value: 36.8
+    start_date: "2026-02-17"
+    end_date: "2026-03-02"
+  # Found by src/mp035/data_checks.py (leaking_column check)
+  leaking_columns:
+    - pm25_measured_next_day
+
+model:
+  name: mp035-pm25
+  experiment: mp035-pm25
+  target: pm25_next_day
+  random_state: 42
+  test_size: 0.2
+  features_numeric:
+    - pm25_today
+    - wind_kmph
+    - humidity_pct
+    - temp_c
+    - traffic_index
+    - stubble_fires
+  features_categorical:
+    - day_type
+    - station_zone
+  candidates:
+    - name: ridge_alpha1
+      kind: ridge
+      alpha: 1.0
+    - name: gbr_depth3
+      kind: gbr
+      n_estimators: 300
+      max_depth: 3
+      learning_rate: 0.05
+    - name: rf_depth8
+      kind: rf
+      n_estimators: 300
+      max_depth: 8

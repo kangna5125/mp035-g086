@@ -1,0 +1,57 @@
+# MP035 findings. Values computed by src/mp035/data_checks.py and src/mp035/train.py.
+group_id: "G086"
+problem_id: "MP035"
+
+data_issues:
+  leaking_column:
+    present: true
+    column: pm25_measured_next_day
+  unit_mixup:
+    present: false
+    column: null
+    group_value: null
+    factor: null
+  sentinel_value:
+    present: false
+    column: null
+    value: null
+    count: null
+  duplicate_rows:
+    present: true
+    count: 49
+  stuck_sensor:
+    present: true
+    column: pm25_today
+    start_date: "2026-02-17"
+    end_date: "2026-03-02"
+  target_typos:
+    present: false
+    count: null
+  spelling_variants:
+    present: false
+    column: null
+    true_levels: null
+
+tracking:
+  experiment_name: mp035-pm25
+  best_run_id: null          # copy the best_run_id line printed by: python -m mp035.train
+  registered_model_name: mp035-pm25
+  champion_version: null     # set to 1 after your own training run
+
+monitoring:
+  psi:
+    pm25_today: null
+    wind_kmph: null
+    humidity_pct: null
+    temp_c: null
+    traffic_index: null
+    stubble_fires: null
+  most_drifted_feature: null
+  mae_by_group:
+    'Central': null
+    'Residential': null
+    'Industrial': null
+  worst_served_group: null
+  mae_v1_on_check: null
+  mae_v2_on_check: null
+  decision: null
