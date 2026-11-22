@@ -34,9 +34,9 @@ data_issues:
 
 tracking:
   experiment_name: mp035-pm25
-  best_run_id: null          # copy the best_run_id line printed by: python -m mp035.train
+  best_run_id: "e516c7694a7c4038a18699a85fa4493d"
   registered_model_name: mp035-pm25
-  champion_version: null     # set to 1 after your own training run
+  champion_version: 1
 
 monitoring:
   psi:
