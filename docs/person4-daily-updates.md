@@ -14,3 +14,16 @@
 - `908c6e0` Stage 2: test that split_xy separates target from features
 - (plus `Add Person 4 daily update log`)
 **Next:** Proceed to Day 2 (Thu 26 Nov): Stage 3 API tests.
+
+## Day 2, Thu 26 Nov 2026
+**Planned:** Sync with `main`, verify `app/main.py` (Person 3) and `models/model.joblib` exist, add `pytest.ini` and `tests/test_api.py`, run full pytest suite, commit and push.
+**Done:**
+- Fetched and merged `origin/main` (`2a12a42 Add config tests for params.yaml`) into `avinash/pipeline-setup`.
+- Verified `models/model.joblib` exists.
+- Checked for `app/main.py`: missing.
+- Ran existing suite (`PYTHONPATH=src python -m pytest -q tests`): `11 passed in 1.90s`.
+**Not done:** `pytest.ini`, `tests/test_api.py` (blocked), `tests/test_predictions.py` (scheduled for Day 4).
+**Blocked by:** Person 3 (Service lead) — `app/main.py` does not exist yet on `main`.
+**Commits today:**
+- (merge commit from `origin/main` + `Update Day 2 log: blocked on app/main.py`)
+**Next:** Wait for Person 3 to push `app/main.py` to `main`, then pull and add `pytest.ini` + `tests/test_api.py`.
