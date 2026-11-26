@@ -27,3 +27,19 @@
 **Commits today:**
 - (merge commit from `origin/main` + `Update Day 2 log: blocked on app/main.py`)
 **Next:** Wait for Person 3 to push `app/main.py` to `main`, then pull and add `pytest.ini` + `tests/test_api.py`.
+
+## Day 2 (continued), Thu 26 Nov 2026 — Stage 3 Unblocked
+**Planned:** Pull `origin/main` after Person 3 merged `app/main.py`, add `pytest.ini` and `tests/test_api.py`, run full pytest suite, commit and push.
+**Done:**
+- Merged `origin/main` (`ebf9b25`, including Person 3's `app/main.py`) into `avinash/pipeline-setup`.
+- Verified `app/main.py` and `models/model.joblib` exist.
+- Added `pytest.ini` and `tests/test_api.py` from `stage3-person4-tests.zip`.
+- Confirmed all 4 API tests pass (`/health` ok, `/predict` returns float, `temp_c=71` -> 422, `stubble_fires=-1` -> 422): `4 passed, 1 warning in 32.59s`.
+- Ran full suite (`PYTHONPATH=src python -m pytest -q tests`): `22 passed, 1 warning in 11.22s`.
+**Not done:** `tests/test_predictions.py` (scheduled for Day 4); GitHub Actions tab check (to be verified after push).
+**Blocked by:** nothing
+**Commits today:**
+- `33d2a97` Merge remote-tracking branch 'origin/main' into avinash/pipeline-setup
+- `1a95472` Stage 3: pytest config and API tests with TestClient
+- (plus Day 2 log update)
+**Next:** Check the GitHub Actions tab for CI status, then proceed to Day 3 (Fri 27 Nov) review & viva prep.
