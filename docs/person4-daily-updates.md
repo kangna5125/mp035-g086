@@ -43,7 +43,6 @@
 - `1a95472` Stage 3: pytest config and API tests with TestClient
 - (plus Day 2 log update)
 **Next:** Check the GitHub Actions tab for CI status, then proceed to Day 3 (Fri 27 Nov) review & viva prep.
-
 ## Day 3, Fri 27 Nov 2026
 **Planned:** Verify handbook test rules (3+ tests, `TestClient` used, no dependency on DVC-ignored CSVs), run full suite twice from a clean shell, review all 4 test files line by line, and add 3 viva Q&As per test file to the log.
 **Done:**
@@ -94,3 +93,15 @@
    **A:** It checks that the set of `record_id` values in `holdout_predictions.csv` matches `data/raw/holdout_features.csv` and that no prediction is `NaN` (`notna().all()`).
 3. **Q:** Why does this test work in CI without `train.csv`?
    **A:** Both `data/raw/holdout_features.csv` and `predictions/holdout_predictions.csv` are tracked in Git (not DVC-ignored).
+
+## Day 4, Sat 28 Nov 2026
+**Planned:** Pull `origin/main`, verify `predictions/holdout_predictions.csv` exists (Person 3, after Person 2's retrain), add `tests/test_predictions.py`, run pytest, commit and push.
+**Done:**
+- Fetched and merged `origin/main` (`8e8faf4 Stage 3: Docker and yaml`) into `avinash/pipeline-setup`.
+- Checked for `predictions/holdout_predictions.csv`: missing (not generated/pushed yet).
+- Ran existing suite (`python -m pytest -q tests`): `22 passed, 1 warning in 4.24s`.
+**Not done:** `tests/test_predictions.py` (blocked; not added or committed so CI stays green).
+**Blocked by:** Person 3 (Service lead) & Person 2 (Model lead) — `predictions/holdout_predictions.csv` does not exist yet on `main`.
+**Commits today:**
+- (merge commit from `origin/main` + Day 4 log update)
+**Next:** Wait for Person 2 (retrain) and Person 3 (`predictions/holdout_predictions.csv`) to push to `main`, then add and run `tests/test_predictions.py`.
